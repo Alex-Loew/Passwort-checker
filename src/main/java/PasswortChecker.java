@@ -4,90 +4,58 @@ public class PasswortChecker {
 
     public static boolean pwValidateMinLength(String passwort) {
 
-        if (passwort.length() >=8){
-            return true;
-
-        }else {
-            return false;
-        }
+        return passwort.length() >= 8;
     }
 
     public static boolean pwValidateMaxLength(String passwort) {
-        if (passwort.length() <=20){
-            return true;
 
-        }else {
-            return false;
-        }
+        return passwort.length() <= 20;
     }
 
 
     public static boolean pwValidateForNumber(String passwort) {
 
-        if (passwort.matches("(.*[0-9].*)")){
-            return true;
-
-        }else {
-
-            return false;
-        }
+        return passwort.matches("(.*[0-9].*)");
     }
 
     public static boolean pwValidateForLowerChaseChar(String passwort) {
 
-        if (passwort.matches("(.*[a-z].*)")){
-            return true;
-
-        }else {
-
-            return false;
-        }
+        return passwort.matches("(.*[a-z].*)");
 
     }
 
     public static boolean pwValidateForUpperChaseChar(String passwort) {
 
-        if (passwort.matches("(.*[A-Z].*)")){
-            return true;
-
-        }else {
-
-            return false;
-        }
+        return passwort.matches("(.*[A-Z].*)");
 
     }
 
     public static boolean pwValidateForSpecialChar(String passwort) {
 
-        if (passwort.matches(".*[@,#,$,%,!].*")){
-            return true;
+        return passwort.matches(".*[@,#,$,%,!].*");
 
-        }else {
-
-            return false;
-        }
     }
 
     public static String pwCheck(String passwort) {
 
         int[] pwCheckArray = {0,0,0,0,0,0};
         //Check all the Statements
-        if (pwValidateMinLength(passwort)==true){
+        if (pwValidateMinLength(passwort)){
             pwCheckArray[0]=1;
         }
-        if (pwValidateForSpecialChar(passwort)==true){
+        if (pwValidateForSpecialChar(passwort)){
             pwCheckArray[1]=1;
         }
-        if (pwValidateForNumber(passwort)==true){
+        if (pwValidateForNumber(passwort)){
             pwCheckArray[2]=1;
         }
-        if (pwValidateForUpperChaseChar(passwort)==true){
+        if (pwValidateForUpperChaseChar(passwort)){
             pwCheckArray[3]=1;
         }
-        if (pwValidateForLowerChaseChar(passwort)==true){
+        if (pwValidateForLowerChaseChar(passwort)){
             pwCheckArray[4]=1;
         }
-        if (pwValidateMaxLength(passwort)==true){
+        if (pwValidateMaxLength(passwort)){
             pwCheckArray[5]=1;
         }
         //Print individual Fail Message
