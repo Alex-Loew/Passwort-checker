@@ -20,4 +20,16 @@ public class PasswortChecker {
             return false;
         }
     }
+
+    public static boolean pwValidateForLowerChaseChar(String passwort) {
+
+        if (passwort.matches("(.*[a-z].*)")){
+            return true;
+
+        }else {
+
+            return false;
+        }
+
+    }
 }

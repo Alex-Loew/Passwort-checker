@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswortCheckerTest {
 
-    //Check Min Length of 8
+    //Check Min Length of 8 and max 20
     @Test
     void shouldPasswortBeBetween8and20CharactersItShouldBeTrue(){
         //given
@@ -37,6 +37,8 @@ class PasswortCheckerTest {
         assertFalse(actual);
 
     }
+
+
 
     @Test
     void shouldPasswortBeExactly8CharactersItShouldBeTrue(){
@@ -71,5 +73,25 @@ class PasswortCheckerTest {
         assertFalse(actual);
     }
 
+    //Check for LowerCaseChar
+    @Test
+    void ShouldPasswortContainsLowerCaseCharItShouldBeTrue(){
+        //given
+        String passwort = "pass1234wort";
+        //when
+        boolean actual = PasswortChecker.pwValidateForLowerChaseChar(passwort);
+        //then
+        assertTrue(actual);
+    }
+
+    @Test
+    void ShouldPasswortNotContainsLowerCaseCharItShouldBeFalse(){
+        //given
+        String passwort = "PASSWORT";
+        //when
+        boolean actual = PasswortChecker.pwValidateForLowerChaseChar(passwort);
+        //then
+        assertFalse(actual);
+    }
 
 }
