@@ -214,5 +214,17 @@ class PasswortCheckerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void ShouldPasswortBeArray(){
+        //given
+        String[] passwort = {"PASSwort1234!", "PASSWORT1234!" };
+        String[][] expected = {{"PASSwort1234!","Passwort ist zulässig."},{"PASSWORT1234!", "Passwort ist nicht zulässig."}};
+        //when
+        String[][] actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertArrayEquals(expected, actual);
+    }
+
+
 
 }
