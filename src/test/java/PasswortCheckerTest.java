@@ -217,8 +217,10 @@ class PasswortCheckerTest {
     @Test
     void ShouldPasswortBeArray(){
         //given
-        String[] passwort = {"PASSwort1234!", "PASSWORT1234!" };
-        String[][] expected = {{"PASSwort1234!","Passwort ist zulässig."},{"PASSWORT1234!", "Passwort ist nicht zulässig."}};
+        String pwCheckPos = "Passwort ist zulässig.";
+        String pwCheckNeg = "Passwort ist nicht zulässig.";
+        String[] passwort = {"PASSwort1234!", "PASSWORT1234!","passwort1234!","PASSwort1234","PaSW12!","P" };
+        String[][] expected = {{"PASSwort1234!",pwCheckPos},{"PASSWORT1234!", pwCheckNeg},{"passwort1234!",pwCheckNeg},{"PASSwort1234",pwCheckNeg},{"PaSW12!",pwCheckNeg},{"P",pwCheckNeg}};
         //when
         String[][] actual = PasswortChecker.pwCheck(passwort);
         //then

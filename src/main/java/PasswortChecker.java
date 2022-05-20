@@ -93,6 +93,8 @@ public class PasswortChecker {
         for (int i=0; i<passwort.length; i++){
             result[i][0]=passwort[i];
             result[i][1]=PasswortChecker.pwCheck(passwort[i]);
+            System.out.println(result[i][0]);
+            System.out.println(result[i][1]);
         }
         return result;
     }
