@@ -1,8 +1,8 @@
 public class PasswortChecker {
 
-    public static boolean pwValidateMinLength(String passwort) {
+    public static boolean pwValidateLength(String passwort) {
 
-        if (passwort.length() >=8 ){
+        if (passwort.length() >=8 && passwort.length() <=20){
             return true;
 
         }else {
