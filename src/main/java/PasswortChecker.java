@@ -9,4 +9,15 @@ public class PasswortChecker {
             return false;
         }
     }
+
+    public static boolean pwValidateForNumber(String passwort) {
+
+        if (passwort.matches("(.*[0-9].*)")){
+            return true;
+
+        }else {
+
+            return false;
+        }
+    }
 }

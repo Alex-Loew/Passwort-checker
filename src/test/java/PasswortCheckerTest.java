@@ -38,7 +38,26 @@ class PasswortCheckerTest {
 
     }
 
-    //
+    //Check for Number
+    @Test
+    void ShouldPasswortContainsANumberItShouldBeTrue(){
+        //given
+        String passwort = "pass1234wort";
+        //when
+        boolean actual = PasswortChecker.pwValidateForNumber(passwort);
+        //then
+        assertTrue(actual);
+    }
+
+    @Test
+    void ShouldPasswortContainsNoNumberItShouldBeFalse(){
+        //given
+        String passwort = "passwort";
+        //when
+        boolean actual = PasswortChecker.pwValidateForNumber(passwort);
+        //then
+        assertFalse(actual);
+    }
 
 
 }
