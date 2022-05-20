@@ -10,7 +10,7 @@ class PasswortCheckerTest {
         //given
         String passwort = "123456789";
         //when
-        boolean actual = PasswortChecker.pwValidateLength(passwort);
+        boolean actual = PasswortChecker.pwValidateMinLength(passwort);
         //then
         assertTrue(actual);
 
@@ -21,7 +21,7 @@ class PasswortCheckerTest {
         //given
         String passwort = "1234567";
         //when
-        boolean actual = PasswortChecker.pwValidateLength(passwort);
+        boolean actual = PasswortChecker.pwValidateMinLength(passwort);
         //then
         assertFalse(actual);
 
@@ -32,7 +32,7 @@ class PasswortCheckerTest {
         //given
         String passwort = "123456789012345678901";
         //when
-        boolean actual = PasswortChecker.pwValidateLength(passwort);
+        boolean actual = PasswortChecker.pwValidateMaxLength(passwort);
         //then
         assertFalse(actual);
 
@@ -45,7 +45,7 @@ class PasswortCheckerTest {
         //given
         String passwort = "12345678";
         //when
-        boolean actual = PasswortChecker.pwValidateLength(passwort);
+        boolean actual = PasswortChecker.pwValidateMinLength(passwort);
         //then
         assertTrue(actual);
 
@@ -93,5 +93,126 @@ class PasswortCheckerTest {
         //then
         assertFalse(actual);
     }
+
+    //Check for UpperCaseChar
+    @Test
+    void ShouldPasswortContainsUpperCaseCharItShouldBeTrue(){
+        //given
+        String passwort = "PASS1234WORT";
+        //when
+        boolean actual = PasswortChecker.pwValidateForUpperChaseChar(passwort);
+        //then
+        assertTrue(actual);
+    }
+
+    @Test
+    void ShouldPasswortNotContainsUpperCaseCharItShouldBeFalse(){
+        //given
+        String passwort = "passwort";
+        //when
+        boolean actual = PasswortChecker.pwValidateForUpperChaseChar(passwort);
+        //then
+        assertFalse(actual);
+    }
+
+    //Check for Special Char
+    @Test
+    void ShouldPasswortContainsSpecialCharItShouldBeTrue(){
+        //given
+        String passwort = "Plasdfn!42";
+        //when
+        boolean actual = PasswortChecker.pwValidateForSpecialChar(passwort);
+        //then
+        assertTrue(actual);
+    }
+
+    @Test
+    void ShouldPasswortNotContainsSpecialCharItShouldBeFalse(){
+        //given
+        String passwort = "passwort";
+        //when
+        boolean actual = PasswortChecker.pwValidateForSpecialChar(passwort);
+        //then
+        assertFalse(actual);
+    }
+
+    //Check if Passwort is valid
+    @Test
+    void ShouldPasswortBeValidPrintValidMessage(){
+        //given
+        String passwort = "PASSwort1234!";
+        String expected = "Passwort ist zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeMissingLowerCharPrintFailMessage(){
+        //given
+        String passwort = "PASSWORT1234!";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeMissingUpperCharPrintFailMessage(){
+        //given
+        String passwort = "passwort1234!";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeMissingSpecialCharPrintFailMessage(){
+        //given
+        String passwort = "Passwort1234";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeMissingNumberPrintFailMessage(){
+        //given
+        String passwort = "Passwort!";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeTooShortPrintFailMessage(){
+        //given
+        String passwort = "Pas123!";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void ShouldPasswortBeTooLongPrintFailMessage(){
+        //given
+        String passwort = "PASSwort1234!PASSWORT";
+        String expected = "Passwort ist nicht zulässig.";
+        //when
+        String actual = PasswortChecker.pwCheck(passwort);
+        //then
+        assertEquals(expected, actual);
+    }
+
 
 }
